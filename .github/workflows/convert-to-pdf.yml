@@ -33,6 +33,7 @@ jobs:
           name: docs
           path: |
             pdfs
+            docs
             docs/pdfs
           if-no-files-found: warn
           overwrite: true
