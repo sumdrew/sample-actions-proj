@@ -25,3 +25,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Get Lines of Code with CLOC2.py
         run: python .github/workflows/CLOC2.py
+      - name: Commit README.md
+        run: |
+          git config --global user.name "andsum"
+          git config --global user.email "andrew@sumuri.com"
+          git add README.md
+          git commit -m "Auto generated README.md"
+          git push
