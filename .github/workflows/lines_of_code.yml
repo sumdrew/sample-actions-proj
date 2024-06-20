@@ -5,7 +5,7 @@ name: Python Script
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,21 +18,28 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-        contents: read # allows reading repository contents (needed for checkout)
-        actions: write # allows workflow to create/cancel workflow runs (needed for push)
+      contents: read # allows reading repository contents (needed for checkout)
+      actions: write # allows workflow to create/cancel workflow runs (needed for push)
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Get Lines of Code with CLOC2.py
         run: python .github/workflows/CLOC2.py
-      - name: Commit README.md
+
+      - name: Commit files
         run: |
-          git config --global user.name "andsum"
-          git config --global user.email "andrew@sumuri.com"
-          git add README.md
-          git commit -m "Auto generated README.md"
-          git push
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git commit -a -m "Add automated changes"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
