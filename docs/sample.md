@@ -122,9 +122,11 @@ apples
 
 oranges
 : Citrus!
+: Vitamin C, and it's Orange in color and in name.
 
 tomatoes
 : There's no "e" in tomatoe.
+: A second line item for this fruit.
 
 Again, text is indented 4 spaces. (Put a blank line between each
 term/definition pair to spread things out more.)
