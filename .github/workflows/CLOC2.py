@@ -41,7 +41,7 @@ def count_lines_of_code(directories, languages):
 
 
 languages = [".md", ".html"]
-os.chdir('../../')
+# os.chdir('../../')
 directories = [os.path.join(os.getcwd(), "docs")]
 lines = count_lines_of_code(directories, languages)
 
