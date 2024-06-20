@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read # allows reading repository contents (needed for checkout)
+      contents: write # allows reading repository contents (needed for checkout)
       actions: write # allows workflow to create/cancel workflow runs (needed for push)
 
     # Steps represent a sequence of tasks that will be executed as part of the job
